@@ -94,6 +94,9 @@ const briefCategory = document.getElementById('briefCategory');
 const streakBadge = document.getElementById('streakBadge');
 const briefQuestion = document.getElementById('briefQuestion');
 const canvasHint = document.getElementById('canvasHint');
+const hintToggleBtn = document.getElementById('hintToggleBtn');
+const hintCloseBtn = document.getElementById('hintCloseBtn');
+const hintText = document.getElementById('hintText');
 const actionPanel = document.getElementById('actionPanel');
 const damageText = document.getElementById('damageText');
 
@@ -108,6 +111,23 @@ const finalScore = document.getElementById('finalScore');
 const finalStreak = document.getElementById('finalStreak');
 const resultPlayerName = document.getElementById('resultPlayerName');
 const retryBtn = document.getElementById('retryBtn');
+
+// 힌트 버튼 토글 이벤트
+if (hintToggleBtn && canvasHint) {
+  hintToggleBtn.addEventListener('click', () => {
+    if (window.soundFX) window.soundFX.click();
+    canvasHint.classList.remove('hidden');
+    hintToggleBtn.style.display = 'none';
+  });
+}
+
+if (hintCloseBtn && canvasHint) {
+  hintCloseBtn.addEventListener('click', () => {
+    if (window.soundFX) window.soundFX.click();
+    canvasHint.classList.add('hidden');
+    if (hintToggleBtn) hintToggleBtn.style.display = 'flex';
+  });
+}
 
 function initPlayer() {
   const cur = window.mathStorage.getCurrentPlayer();
@@ -131,7 +151,16 @@ function loadStage(index) {
 
   briefCategory.textContent = stage.category;
   briefQuestion.textContent = stage.question;
-  canvasHint.textContent = `💡 힌트: ${stage.hint}`;
+
+  // 힌트는 바로 제공하지 않고 버튼을 눌러야 보이도록 초기화
+  if (hintText) {
+    hintText.textContent = `💡 힌트: ${stage.hint}`;
+  } else if (canvasHint) {
+    canvasHint.textContent = `💡 힌트: ${stage.hint}`;
+  }
+  if (canvasHint) canvasHint.classList.add('hidden');
+  if (hintToggleBtn) hintToggleBtn.style.display = 'flex';
+
   streakBadge.textContent = `🔥 ${streak} COMBO`;
 
   actionPanel.innerHTML = '';

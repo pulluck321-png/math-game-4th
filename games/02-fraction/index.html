@@ -65,8 +65,14 @@
     <div class="fraction-canvas-card">
       <canvas id="fracCanvas" width="760" height="380"></canvas>
       <div class="floating-damage" id="damageText"></div>
-      <div class="canvas-hint-overlay" id="canvasHint">
-        💡 힌트: 분모는 그대로 두고 분자끼리 더하거나 뺍니다!
+      <div class="hint-control-box">
+        <button class="hint-toggle-btn" id="hintToggleBtn" type="button" title="힌트가 필요하면 클릭하세요!">
+          <span>💡</span> <span>힌트 보기</span>
+        </button>
+        <div class="canvas-hint-overlay hidden" id="canvasHint">
+          <span class="hint-text" id="hintText">💡 힌트: 분모는 그대로 두고 분자끼리 더하거나 뺍니다!</span>
+          <button class="hint-close-btn" id="hintCloseBtn" type="button" title="힌트 닫기">✕</button>
+        </div>
       </div>
     </div>
 
