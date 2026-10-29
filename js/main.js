@@ -21,6 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const playerTabBtns = document.querySelectorAll('.player-tab-btn');
   const leaderboardList = document.getElementById('leaderboardList');
 
+  // 로그인 모달 및 네비게이션 요소
+  const loginNavBtn = document.getElementById('loginNavBtn');
+  const loginNavBtnText = document.getElementById('loginNavBtnText');
+  const loginModal = document.getElementById('loginModal');
+  const loginPlayerGrid = document.getElementById('loginPlayerGrid');
+  const currentLoginPlayerName = document.getElementById('currentLoginPlayerName');
+  const resetAllScoresBtn = document.getElementById('resetAllScoresBtn');
+
   // 모달 요소
   const guideModal = document.getElementById('guideModal');
   const profileModal = document.getElementById('profileModal');
@@ -31,12 +39,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let selectedAvatar = '⚡';
 
+  // 로그인 모달 내부 정보 갱신
+  function updateLoginModalUI() {
+    const curPlayer = window.mathStorage.getCurrentPlayer();
+    const players = window.mathStorage.data.players;
+
+    if (currentLoginPlayerName) {
+      currentLoginPlayerName.innerHTML = `${curPlayer.avatar} ${curPlayer.name}`;
+    }
+
+    ['p1', 'p2', 'p3'].forEach(pid => {
+      const p = players[pid];
+      if (p) {
+        const starsEl = document.getElementById(`${pid}Stars`);
+        const scoreEl = document.getElementById(`${pid}Score`);
+        if (starsEl) starsEl.textContent = p.totalStars;
+        if (scoreEl) scoreEl.textContent = Number(p.totalScore).toLocaleString();
+      }
+    });
+
+    if (loginPlayerGrid) {
+      loginPlayerGrid.querySelectorAll('.player-select-card').forEach(card => {
+        const pid = card.getAttribute('data-player');
+        card.classList.toggle('active-player', pid === curPlayer.id);
+      });
+    }
+  }
+
   // 1. 프로필 및 스탯 렌더링
   function updateStatsUI() {
     const curPlayer = window.mathStorage.getCurrentPlayer();
     if (userStarsEl) userStarsEl.textContent = curPlayer.totalStars;
     if (userAvatarEl) userAvatarEl.textContent = curPlayer.avatar;
     if (userNameEl) userNameEl.textContent = curPlayer.name;
+
+    if (loginNavBtnText) {
+      loginNavBtnText.textContent = `${curPlayer.name} (접속 중)`;
+    }
 
     const totalGames = MATH_GAMES.length;
     const readyGames = MATH_GAMES.filter(g => g.isReady).length;
@@ -60,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    updateLoginModalUI();
     updateLeaderboardUI();
   }
 
@@ -360,16 +400,73 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ========================================================
+  // 선수 로그인 및 점수 초기화 이벤트
+  // ========================================================
+  if (loginNavBtn && loginModal) {
+    loginNavBtn.addEventListener('click', () => {
+      window.soundFX.click();
+      updateLoginModalUI();
+      openModal(loginModal);
+    });
+  }
+
+  // 상단 프로필 뱃지 클릭 시에도 편리하게 로그인 모달 오픈
+  if (userProfileBtn && loginModal) {
+    userProfileBtn.addEventListener('click', (e) => {
+      // 기본 프로필 편집 대신 원클릭 선수 전환 모달 오픈
+      e.stopPropagation();
+      window.soundFX.click();
+      updateLoginModalUI();
+      openModal(loginModal);
+    });
+  }
+
+  // 모달 내부 3인 선수 카드 클릭 시 원클릭 로그인
+  if (loginPlayerGrid) {
+    loginPlayerGrid.querySelectorAll('.player-select-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const pid = card.getAttribute('data-player');
+        const chosen = window.mathStorage.switchPlayer(pid);
+        window.soundFX.correct();
+        updateStatsUI();
+        renderGames();
+        closeModal(loginModal);
+
+        // 친근한 알림 토스트 (사운드와 함께)
+        const nameMap = { p1: "⚡ 경석", p2: "🔥 현석", p3: "🤖 주원" };
+        const pTitle = nameMap[pid] || chosen.name;
+        console.log(`[로그인 완료] ${pTitle} 선수로 접속되었습니다!`);
+      });
+    });
+  }
+
+  // 모든 선수 점수 0점 초기화 버튼
+  if (resetAllScoresBtn) {
+    resetAllScoresBtn.addEventListener('click', () => {
+      window.soundFX.wrong();
+      const confirmReset = confirm("⚠️ [점수 초기화]\n\n경석, 현석, 주원 모든 선수의 점수와 별점을 0점으로 깨끗하게 초기화하시겠습니까?\n이 작업은 되돌릴 수 없습니다.");
+      if (confirmReset) {
+        window.mathStorage.resetAllScores();
+        window.soundFX.crit();
+        updateStatsUI();
+        renderGames();
+        alert("✨ 경석, 현석, 주원 선수의 점수와 별점이 모두 0점으로 초기화되었습니다!\n새로운 시즌 배틀을 시작하세요!");
+      }
+    });
+  }
+
   modalCloseBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       window.soundFX.click();
       if (guideModal) closeModal(guideModal);
       if (profileModal) closeModal(profileModal);
+      if (loginModal) closeModal(loginModal);
       if (cloudModal) closeModal(cloudModal);
     });
   });
 
-  [guideModal, profileModal, cloudModal].forEach(modal => {
+  [guideModal, profileModal, loginModal, cloudModal].forEach(modal => {
     if (modal) {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal(modal);
@@ -381,3 +478,4 @@ document.addEventListener('DOMContentLoaded', () => {
   updateStatsUI();
   renderGames();
 });
+

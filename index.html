@@ -31,9 +31,14 @@
       </div>
 
       <div class="nav-controls">
-        <div class="user-badge-pill" id="userProfileBtn" title="내 프로필 편집하기">
-          <span class="user-avatar" id="userAvatarDisplay">🚀</span>
-          <span class="user-name" id="userNameDisplay">멋진 수학탐험가</span>
+        <button class="nav-login-btn" id="loginNavBtn" title="선수 로그인 및 전환">
+          <span>🔑</span>
+          <span id="loginNavBtnText">선수 로그인</span>
+        </button>
+
+        <div class="user-badge-pill" id="userProfileBtn" title="내 프로필 보기 / 선수 변경">
+          <span class="user-avatar" id="userAvatarDisplay">⚡</span>
+          <span class="user-name" id="userNameDisplay">경석</span>
           <div class="user-stars">
             <span>⭐</span>
             <span id="userTotalStars">0</span>
@@ -91,14 +96,14 @@
 
           <!-- 3인 선수 퀵 전환 탭 -->
           <div class="players-switch-bar" id="playerSwitchBar">
-            <button class="player-tab-btn active" data-player="p1">
-              <span>⚡</span> <span class="tab-pname">선수 1</span>
+            <button class="player-tab-btn active" data-player="p1" title="경석 선수로 플레이">
+              <span>⚡</span> <span class="tab-pname">경석</span>
             </button>
-            <button class="player-tab-btn" data-player="p2">
-              <span>🔥</span> <span class="tab-pname">선수 2</span>
+            <button class="player-tab-btn" data-player="p2" title="현석 선수로 플레이">
+              <span>🔥</span> <span class="tab-pname">현석</span>
             </button>
-            <button class="player-tab-btn" data-player="p3">
-              <span>🤖</span> <span class="tab-pname">선수 3</span>
+            <button class="player-tab-btn" data-player="p3" title="주원 선수로 플레이">
+              <span>🤖</span> <span class="tab-pname">주원</span>
             </button>
           </div>
 
@@ -201,7 +206,77 @@
         <button class="modal-btn primary" id="profileSaveBtn">저장하기</button>
       </div>
     </div>
-  <!-- 3. Supabase 클라우드 실시간 랭킹 설정 모달 -->
+  </div>
+
+  <!-- 3. 선수 로그인 및 계정 전환 모달 -->
+  <div class="modal-overlay" id="loginModal" role="dialog" aria-labelledby="loginModalTitle">
+    <div class="modal-card login-modal-card">
+      <button class="modal-close" aria-label="닫기">×</button>
+      <div class="modal-header" style="text-align: center;">
+        <h2 id="loginModalTitle">🎮 선수 로그인</h2>
+        <p>함께 도전할 선수를 선택하면 즉시 로그인됩니다!</p>
+      </div>
+
+      <!-- 3인 선수 선택 카드 그리드 -->
+      <div class="player-select-grid" id="loginPlayerGrid">
+        <div class="player-select-card" data-player="p1">
+          <div class="player-avatar-circle">⚡</div>
+          <div class="player-card-info">
+            <h3 class="player-card-name">경석</h3>
+            <div class="player-card-stats">
+              <span>⭐ <strong class="p-stars-display" id="p1Stars">0</strong></span>
+              <span>🏆 <strong class="p-score-display" id="p1Score">0</strong>점</span>
+            </div>
+          </div>
+          <button class="select-player-btn" type="button">선택하기</button>
+        </div>
+
+        <div class="player-select-card" data-player="p2">
+          <div class="player-avatar-circle">🔥</div>
+          <div class="player-card-info">
+            <h3 class="player-card-name">현석</h3>
+            <div class="player-card-stats">
+              <span>⭐ <strong class="p-stars-display" id="p2Stars">0</strong></span>
+              <span>🏆 <strong class="p-score-display" id="p2Score">0</strong>점</span>
+            </div>
+          </div>
+          <button class="select-player-btn" type="button">선택하기</button>
+        </div>
+
+        <div class="player-select-card" data-player="p3">
+          <div class="player-avatar-circle">🤖</div>
+          <div class="player-card-info">
+            <h3 class="player-card-name">주원</h3>
+            <div class="player-card-stats">
+              <span>⭐ <strong class="p-stars-display" id="p3Stars">0</strong></span>
+              <span>🏆 <strong class="p-score-display" id="p3Score">0</strong>점</span>
+            </div>
+          </div>
+          <button class="select-player-btn" type="button">선택하기</button>
+        </div>
+      </div>
+
+      <!-- 현재 로그인 상태 & 점수 초기화 옵션 -->
+      <div class="login-footer-actions">
+        <div class="current-login-status">
+          <span>현재 접속 중: </span>
+          <strong id="currentLoginPlayerName" style="color: #38bdf8;">⚡ 경석</strong>
+        </div>
+
+        <div class="reset-score-box">
+          <button type="button" class="reset-scores-btn" id="resetAllScoresBtn" title="모든 선수의 점수를 0점으로 리셋합니다">
+            <span>🔄</span> 모든 선수 점수 초기화
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-actions" style="margin-top: 18px;">
+        <button class="modal-btn secondary modal-cancel" style="width: 100%;">창 닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Supabase 클라우드 실시간 랭킹 설정 모달 -->
   <div class="modal-overlay" id="cloudModal" role="dialog" aria-labelledby="cloudModalTitle">
     <div class="modal-card">
       <button class="modal-close" aria-label="닫기">×</button>

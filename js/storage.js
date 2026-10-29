@@ -1,6 +1,6 @@
-// storage.js - 3인 플레이어 프로필 및 랭킹전 지원 시스템
+// storage.js - 3인 플레이어(경석, 현석, 주원) 프로필 및 랭킹전 지원 시스템
 
-const STORAGE_KEY = 'math_battle_4_2_stats_v2';
+const STORAGE_KEY = 'math_battle_4_2_stats_v3';
 
 class MathGameStorage {
   constructor() {
@@ -12,18 +12,25 @@ class MathGameStorage {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) {
-        return JSON.parse(raw);
+        const parsed = JSON.parse(raw);
+        // 선수 이름 강제 동기화 (경석, 현석, 주원)
+        if (parsed.players) {
+          if (parsed.players.p1) parsed.players.p1.name = "경석";
+          if (parsed.players.p2) parsed.players.p2.name = "현석";
+          if (parsed.players.p3) parsed.players.p3.name = "주원";
+        }
+        return parsed;
       }
     } catch (e) {
       console.warn("Storage load error:", e);
     }
-    // 초4 남학생 3명을 위한 기본 프로필 3개 세팅!
+    // 초4 삼총사(경석, 현석, 주원) 기본 프로필 및 0점 초기화
     return {
       activePlayerId: 'p1',
       players: {
-        p1: { id: 'p1', name: "번개 타이탄", avatar: "⚡", totalStars: 0, totalScore: 0, games: {} },
-        p2: { id: 'p2', name: "불꽃 드래곤", avatar: "🔥", totalStars: 0, totalScore: 0, games: {} },
-        p3: { id: 'p3', name: "사이버 닌자", avatar: "🤖", totalStars: 0, totalScore: 0, games: {} }
+        p1: { id: 'p1', name: "경석", avatar: "⚡", totalStars: 0, totalScore: 0, games: {} },
+        p2: { id: 'p2', name: "현석", avatar: "🔥", totalStars: 0, totalScore: 0, games: {} },
+        p3: { id: 'p3', name: "주원", avatar: "🤖", totalStars: 0, totalScore: 0, games: {} }
       }
     };
   }
@@ -35,6 +42,19 @@ class MathGameStorage {
     } catch (e) {
       console.warn("Storage save error:", e);
     }
+  }
+
+  // 모든 선수 점수 및 별점 0점 완전 초기화
+  resetAllScores() {
+    for (const pid of ['p1', 'p2', 'p3']) {
+      if (this.data.players[pid]) {
+        this.data.players[pid].totalStars = 0;
+        this.data.players[pid].totalScore = 0;
+        this.data.players[pid].games = {};
+      }
+    }
+    this.saveData();
+    return true;
   }
 
   getCurrentPlayer() {
