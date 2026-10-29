@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>소수 터보 레이싱: 하이퍼 부스터 배틀 - 4학년 2학기 4단원</title>
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="game-top-bar">
+    <a href="../../index.html" class="home-btn" id="goHomeBtn">
+      <span>🏠</span>
+      <span>메인 대시보드</span>
+    </a>
+
+    <div class="game-title-group">
+      <span class="unit-badge">초등 4-2 | 4단원 소수 레이싱</span>
+      <h1>🏎️ 소수 터보 레이싱: 하이퍼 부스터 배틀</h1>
+    </div>
+
+    <div class="game-header-stats">
+      <div class="hud-pill" id="activePlayerBadge" style="background: rgba(225, 29, 72, 0.25); border-color: #fb7185;">
+        <span id="playerAvatar">⚡</span>
+        <span id="playerName" style="color: #fecdd3;">선수 1</span>
+      </div>
+      <div class="hud-pill" title="현재 점수">
+        <span>점수:</span>
+        <span id="scoreDisplay" style="color: #fb7185;">0</span>
+      </div>
+      <button class="home-btn" id="soundBtn" style="padding: 8px 12px;">🔊</button>
+    </div>
+  </header>
+
+  <main class="decimal-container" id="battleArena">
+    <!-- 라이벌 레이서 체력 바 -->
+    <div class="boss-health-card">
+      <div class="boss-info-row">
+        <div class="boss-name-group">
+          <span class="boss-icon">🏎️</span>
+          <div>
+            <h3 class="boss-name">다크 사이버 하이퍼카</h3>
+            <span class="boss-sub">라이벌 (약점: 소수점 자릿값 일치 & 터보 덧셈·뺄셈)</span>
+          </div>
+        </div>
+        <div class="boss-hp-text" id="bossHpText">HP 1000 / 1000 (100%)</div>
+      </div>
+      <div class="hp-track">
+        <div class="hp-fill" id="hpFill" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <!-- 미션 브리핑 카드 -->
+    <div class="mission-brief-card">
+      <div class="brief-top">
+        <span class="brief-badge" id="briefCategory">1. 소수 두 자리 자릿값</span>
+        <span class="streak-badge" id="streakBadge">🔥 0 COMBO</span>
+      </div>
+      <h2 class="brief-question" id="briefQuestion">
+        소수점 자릿값을 정확히 맞춰 부스터를 점화하고 추월하세요!
+      </h2>
+    </div>
+
+    <!-- 레이싱 트랙 캔버스 -->
+    <div class="decimal-canvas-card">
+      <canvas id="decCanvas" width="760" height="380"></canvas>
+      <div class="floating-damage" id="damageText"></div>
+      <div class="canvas-hint-overlay" id="canvasHint">
+        💡 힌트: 소수의 덧셈과 뺄셈은 소수점의 위치를 똑바로 맞추는 것이 핵심입니다!
+      </div>
+    </div>
+
+    <!-- 하단 선택지 패널 -->
+    <div class="action-panel" id="actionPanel"></div>
+  </main>
+
+  <!-- 결과 모달 -->
+  <div class="game-result-modal" id="resultModal">
+    <div class="result-card">
+      <div style="font-size: 4rem;">🏎️🏁</div>
+      <h2 style="font-family: 'Jua', sans-serif; font-size: 2rem; margin: 8px 0;" id="resultTitle">체커기 1위 골인!</h2>
+      <p style="color: #94a3b8; font-size: 1rem;" id="resultDesc">소수 터보 부스터로 라이벌 하이퍼카를 따돌렸습니다!</p>
+
+      <div class="result-stars" id="resultStars">
+        <span class="star-slot">★</span>
+        <span class="star-slot">★</span>
+        <span class="star-slot">★</span>
+      </div>
+
+      <div style="background: rgba(0,0,0,0.4); border-radius: 18px; padding: 18px; margin: 18px 0; border: 1px solid rgba(255,255,255,0.1);">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="color: #94a3b8;">플레이 선수</span>
+          <span style="font-weight: 800; font-size: 1.15rem; color: #fbbf24;" id="resultPlayerName">번개 타이탄</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="color: #94a3b8;">최종 레이싱 점수</span>
+          <span style="font-weight: 900; font-size: 1.35rem; color: #fb7185;" id="finalScore">0점</span>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: #94a3b8;">최대 연속 부스터</span>
+          <span style="font-weight: 800; font-size: 1.15rem; color: #f43f5e;" id="finalStreak">0 COMBO</span>
+        </div>
+      </div>
+
+      <div class="result-btn-row">
+        <button class="result-btn retry" id="retryBtn">🏎️ 다시 레이싱</button>
+        <a href="../../index.html" class="result-btn home">🏆 랭킹 보드로 가기</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/sound.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

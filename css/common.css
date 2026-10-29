@@ -1,0 +1,194 @@
+/* common.css - 모든 개별 게임에서 공유하는 공통 레이아웃 & UI 스타일 */
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Outfit:wght@400;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+:root {
+  --bg-dark: #0b0f19;
+  --bg-card: rgba(23, 32, 54, 0.85);
+  --border-glow: rgba(99, 102, 241, 0.35);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --color-gold: #fbbf24;
+  --color-emerald: #10b981;
+  --color-rose: #f43f5e;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: 'Noto Sans KR', 'Outfit', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 상단 공통 게임 헤더 바 */
+.game-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: rgba(17, 24, 39, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-family: 'Jua', sans-serif;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.home-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateX(-3px);
+}
+
+.game-title-group {
+  text-align: center;
+}
+
+.game-title-group h1 {
+  font-family: 'Jua', sans-serif;
+  font-size: 1.35rem;
+  letter-spacing: -0.5px;
+}
+
+.game-title-group .unit-badge {
+  font-size: 0.72rem;
+  color: #a5b4fc;
+  font-weight: 700;
+}
+
+.game-header-stats {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hud-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-family: 'Outfit', 'Jua', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* 결과 모달 공통 */
+.game-result-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.game-result-modal.show {
+  display: flex;
+  animation: popResult 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+@keyframes popResult {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.result-card {
+  background: #151d30;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  max-width: 460px;
+  width: 100%;
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+.result-stars {
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.2);
+  margin: 16px 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.result-stars .active {
+  color: var(--color-gold);
+  animation: starPop 0.5s ease;
+}
+
+@keyframes starPop {
+  0% { transform: scale(0.3) rotate(-30deg); }
+  60% { transform: scale(1.3) rotate(10deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.result-btn-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.result-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 14px;
+  font-family: 'Jua', sans-serif;
+  font-size: 1.05rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.result-btn.retry {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+.result-btn.retry:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.result-btn.home {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.result-btn.home:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+}

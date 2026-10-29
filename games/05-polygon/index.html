@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>다각형 실드 디펜스: 에일리언 크러시 - 4학년 2학기 5단원</title>
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="game-top-bar">
+    <a href="../../index.html" class="home-btn" id="goHomeBtn">
+      <span>🏠</span>
+      <span>메인 대시보드</span>
+    </a>
+
+    <div class="game-title-group">
+      <span class="unit-badge">초등 4-2 | 5단원 다각형 디펜스</span>
+      <h1>⭐ 다각형 실드 디펜스: 에일리언 크러시</h1>
+    </div>
+
+    <div class="game-header-stats">
+      <div class="hud-pill" id="activePlayerBadge" style="background: rgba(217, 119, 6, 0.25); border-color: #f59e0b;">
+        <span id="playerAvatar">⚡</span>
+        <span id="playerName" style="color: #fde68a;">선수 1</span>
+      </div>
+      <div class="hud-pill" title="현재 점수">
+        <span>점수:</span>
+        <span id="scoreDisplay" style="color: #f59e0b;">0</span>
+      </div>
+      <button class="home-btn" id="soundBtn" style="padding: 8px 12px;">🔊</button>
+    </div>
+  </header>
+
+  <main class="polygon-container" id="battleArena">
+    <!-- 외계 모함 체력 바 -->
+    <div class="boss-health-card">
+      <div class="boss-info-row">
+        <div class="boss-name-group">
+          <span class="boss-icon">🛸</span>
+          <div>
+            <h3 class="boss-name">에일리언 인베이더 모함</h3>
+            <span class="boss-sub">보스 (약점: 정다각형의 완벽한 각과 대각선 레이저 망)</span>
+          </div>
+        </div>
+        <div class="boss-hp-text" id="bossHpText">HP 1000 / 1000 (100%)</div>
+      </div>
+      <div class="hp-track">
+        <div class="hp-fill" id="hpFill" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <!-- 미션 브리핑 카드 -->
+    <div class="mission-brief-card">
+      <div class="brief-top">
+        <span class="brief-badge" id="briefCategory">1. 다각형 실드 전개</span>
+        <span class="streak-badge" id="streakBadge">🔥 0 COMBO</span>
+      </div>
+      <h2 class="brief-question" id="briefQuestion">
+        선분으로만 둘러싸인 올바른 다각형을 선택해 방어벽을 구축하세요!
+      </h2>
+    </div>
+
+    <!-- 다각형 디스플레이 캔버스 -->
+    <div class="polygon-canvas-card">
+      <canvas id="polyCanvas" width="760" height="380"></canvas>
+      <div class="floating-damage" id="damageText"></div>
+      <div class="canvas-hint-overlay" id="canvasHint">
+        💡 힌트: 정다각형은 '모든 변의 길이'와 '모든 각의 크기'가 같아야 합니다!
+      </div>
+    </div>
+
+    <!-- 하단 선택지 패널 -->
+    <div class="action-panel" id="actionPanel"></div>
+  </main>
+
+  <!-- 결과 모달 -->
+  <div class="game-result-modal" id="resultModal">
+    <div class="result-card">
+      <div style="font-size: 4rem;">🛸💥</div>
+      <h2 style="font-family: 'Jua', sans-serif; font-size: 2rem; margin: 8px 0;" id="resultTitle">외계 모함 격추 성공!</h2>
+      <p style="color: #94a3b8; font-size: 1rem;" id="resultDesc">다각형 실드와 대각선 레이저로 지구를 지켜냈습니다!</p>
+
+      <div class="result-stars" id="resultStars">
+        <span class="star-slot">★</span>
+        <span class="star-slot">★</span>
+        <span class="star-slot">★</span>
+      </div>
+
+      <div style="background: rgba(0,0,0,0.4); border-radius: 18px; padding: 18px; margin: 18px 0; border: 1px solid rgba(255,255,255,0.1);">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="color: #94a3b8;">플레이 선수</span>
+          <span style="font-weight: 800; font-size: 1.15rem; color: #fbbf24;" id="resultPlayerName">번개 타이탄</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="color: #94a3b8;">최종 방어 점수</span>
+          <span style="font-weight: 900; font-size: 1.35rem; color: #f59e0b;" id="finalScore">0점</span>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: #94a3b8;">최대 연속 콤보</span>
+          <span style="font-weight: 800; font-size: 1.15rem; color: #f43f5e;" id="finalStreak">0 COMBO</span>
+        </div>
+      </div>
+
+      <div class="result-btn-row">
+        <button class="result-btn retry" id="retryBtn">🛡️ 다시 디펜스</button>
+        <a href="../../index.html" class="result-btn home">🏆 랭킹 보드로 가기</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/sound.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

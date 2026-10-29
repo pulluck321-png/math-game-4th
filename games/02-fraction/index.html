@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>분수 포션 마법전: 다크 위저드 배틀 - 4학년 2학기 2단원</title>
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="game-top-bar">
+    <a href="../../index.html" class="home-btn" id="goHomeBtn">
+      <span>🏠</span>
+      <span>메인 대시보드</span>
+    </a>
+
+    <div class="game-title-group">
+      <span class="unit-badge">초등 4-2 | 2단원 분수 배틀</span>
+      <h1>✨ 분수 포션 마법전: 다크 위저드 배틀</h1>
+    </div>
+
+    <div class="game-header-stats">
+      <div class="hud-pill" id="activePlayerBadge" style="background: rgba(139, 92, 246, 0.25); border-color: #a78bfa;">
+        <span id="playerAvatar">⚡</span>
+        <span id="playerName" style="color: #ddd6fe;">선수 1</span>
+      </div>
+      <div class="hud-pill" title="현재 점수">
+        <span>점수:</span>
+        <span id="scoreDisplay" style="color: #c084fc;">0</span>
+      </div>
+      <button class="home-btn" id="soundBtn" style="padding: 8px 12px;">🔊</button>
+    </div>
+  </header>
+
+  <main class="fraction-container" id="battleArena">
+    <!-- 보스 체력 바 -->
+    <div class="boss-health-card">
+      <div class="boss-info-row">
+        <div class="boss-name-group">
+          <span class="boss-icon">🧙‍♂️</span>
+          <div>
+            <h3 class="boss-name">심연의 다크 아크메이지</h3>
+            <span class="boss-sub">보스 (약점: 동분모 덧셈·뺄셈 & 대분수 마법 연산)</span>
+          </div>
+        </div>
+        <div class="boss-hp-text" id="bossHpText">HP 1000 / 1000 (100%)</div>
+      </div>
+      <div class="hp-track">
+        <div class="hp-fill" id="hpFill" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <!-- 미션 브리핑 카드 -->
+    <div class="mission-brief-card">
+      <div class="brief-top">
+        <span class="brief-badge" id="briefCategory">1. 진분수 마법 조합</span>
+        <span class="streak-badge" id="streakBadge">🔥 0 COMBO</span>
+      </div>
+      <h2 class="brief-question" id="briefQuestion">
+        포션의 마법 분수를 계산하여 강력한 주문을 발동하세요!
+      </h2>
+    </div>
+
+    <!-- 분수 캔버스 & 마법 연금술 수식 카드 -->
+    <div class="fraction-canvas-card">
+      <canvas id="fracCanvas" width="760" height="380"></canvas>
+      <div class="floating-damage" id="damageText"></div>
+      <div class="canvas-hint-overlay" id="canvasHint">
+        💡 힌트: 분모는 그대로 두고 분자끼리 더하거나 뺍니다!
+      </div>
+    </div>
+
+    <!-- 하단 선택지 패널 -->
+    <div class="action-panel" id="actionPanel"></div>
+  </main>
+
+  <!-- 결과 모달 -->
+  <div class="game-result-modal" id="resultModal">
+    <div class="result-card">
+      <div style="font-size: 4rem;">🧙‍♂️💥</div>
+      <h2 style="font-family: 'Jua', sans-serif; font-size: 2rem; margin: 8px 0;" id="resultTitle">다크 위저드 격파 성공!</h2>
+      <p style="color: #94a3b8; font-size: 1rem;" id="resultDesc">완벽한 분수 연산으로 마법 아레나를 정복했습니다!</p>
+
+      <div class="result-stars" id="resultStars">
+        <span class="star-slot">★</span>
+        <span class="star-slot">★</span>
+        <span class="star-slot">★</span>
+      </div>
+
+      <div style="background: rgba(0,0,0,0.4); border-radius: 18px; padding: 18px; margin: 18px 0; border: 1px solid rgba(255,255,255,0.1);">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="color: #94a3b8;">플레이 선수</span>
+          <span style="font-weight: 800; font-size: 1.15rem; color: #fbbf24;" id="resultPlayerName">번개 타이탄</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="color: #94a3b8;">최종 격파 점수</span>
+          <span style="font-weight: 900; font-size: 1.35rem; color: #c084fc;" id="finalScore">0점</span>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: #94a3b8;">최대 연속 콤보</span>
+          <span style="font-weight: 800; font-size: 1.15rem; color: #f43f5e;" id="finalStreak">0 COMBO</span>
+        </div>
+      </div>
+
+      <div class="result-btn-row">
+        <button class="result-btn retry" id="retryBtn">⚔️ 다시 마법 배틀</button>
+        <a href="../../index.html" class="result-btn home">🏆 랭킹 보드로 가기</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/sound.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>삼각형 헌터: 드래곤 던전 슬레이어 - 4학년 2학기 1단원</title>
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="game-top-bar">
+    <a href="../../index.html" class="home-btn" id="goHomeBtn">
+      <span>🏠</span>
+      <span>메인 대시보드</span>
+    </a>
+
+    <div class="game-title-group">
+      <span class="unit-badge">초등 4-2 | 1단원 삼각형 배틀</span>
+      <h1>⚔️ 삼각형 헌터: 드래곤 던전 슬레이어</h1>
+    </div>
+
+    <div class="game-header-stats">
+      <div class="hud-pill" id="activePlayerBadge" style="background: rgba(99, 102, 241, 0.25); border-color: #818cf8;">
+        <span id="playerAvatar">⚡</span>
+        <span id="playerName" style="color: #c7d2fe;">선수 1</span>
+      </div>
+      <div class="hud-pill" title="현재 점수">
+        <span>점수:</span>
+        <span id="scoreDisplay" style="color: #38bdf8;">0</span>
+      </div>
+      <button class="home-btn" id="soundBtn" style="padding: 8px 12px;">🔊</button>
+    </div>
+  </header>
+
+  <main class="triangle-container" id="battleArena">
+    <!-- 보스 체력 바 -->
+    <div class="boss-health-card">
+      <div class="boss-info-row">
+        <div class="boss-name-group">
+          <span class="boss-icon">🐉</span>
+          <div>
+            <h3 class="boss-name">인페르노 화염 드래곤</h3>
+            <span class="boss-sub">던전 로드 (약점: 삼각형 변과 각의 비밀)</span>
+          </div>
+        </div>
+        <div class="boss-hp-text" id="bossHpText">HP 1000 / 1000 (100%)</div>
+      </div>
+      <div class="hp-track">
+        <div class="hp-fill" id="hpFill" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <!-- 미션 브리핑 카드 -->
+    <div class="mission-brief-card">
+      <div class="brief-top">
+        <span class="brief-badge" id="briefCategory">1. 이등변삼각형 공격</span>
+        <span class="streak-badge" id="streakBadge">🔥 0 COMBO</span>
+      </div>
+      <h2 class="brief-question" id="briefQuestion">
+        두 변의 길이가 같은 삼각형을 찾아 드래곤을 타격하세요!
+      </h2>
+    </div>
+
+    <!-- 캔버스 영역 -->
+    <div class="triangle-canvas-card">
+      <canvas id="triCanvas" width="760" height="380"></canvas>
+      <div class="floating-damage" id="damageText"></div>
+      <div class="canvas-hint-overlay" id="canvasHint">
+        💡 힌트: 두 변의 길이가 같으면 이등변삼각형이며, 두 밑각의 크기도 같습니다!
+      </div>
+    </div>
+
+    <!-- 하단 선택지 패널 -->
+    <div class="action-panel" id="actionPanel"></div>
+  </main>
+
+  <!-- 결과 모달 -->
+  <div class="game-result-modal" id="resultModal">
+    <div class="result-card">
+      <div style="font-size: 4rem;">🐉💥</div>
+      <h2 style="font-family: 'Jua', sans-serif; font-size: 2rem; margin: 8px 0;" id="resultTitle">화염 드래곤 토벌 성공!</h2>
+      <p style="color: #94a3b8; font-size: 1rem;" id="resultDesc">삼각형의 힘으로 던전을 완전히 정복했습니다!</p>
+
+      <div class="result-stars" id="resultStars">
+        <span class="star-slot">★</span>
+        <span class="star-slot">★</span>
+        <span class="star-slot">★</span>
+      </div>
+
+      <div style="background: rgba(0,0,0,0.4); border-radius: 18px; padding: 18px; margin: 18px 0; border: 1px solid rgba(255,255,255,0.1);">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="color: #94a3b8;">플레이 선수</span>
+          <span style="font-weight: 800; font-size: 1.15rem; color: #fbbf24;" id="resultPlayerName">번개 타이탄</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="color: #94a3b8;">최종 토벌 점수</span>
+          <span style="font-weight: 900; font-size: 1.35rem; color: #38bdf8;" id="finalScore">0점</span>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: #94a3b8;">최대 연속 콤보</span>
+          <span style="font-weight: 800; font-size: 1.15rem; color: #f43f5e;" id="finalStreak">0 COMBO</span>
+        </div>
+      </div>
+
+      <div class="result-btn-row">
+        <button class="result-btn retry" id="retryBtn">⚔️ 다시 토벌하기</button>
+        <a href="../../index.html" class="result-btn home">🏆 랭킹 보드로 가기</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/sound.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

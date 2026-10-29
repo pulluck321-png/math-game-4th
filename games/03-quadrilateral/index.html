@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사각형 타이탄 배틀: 메카 몬스터를 격파하라! - 4학년 2학기 3단원</title>
+  <link rel="stylesheet" href="../../css/common.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 상단 배틀 헤더 -->
+  <header class="game-top-bar">
+    <a href="../../index.html" class="home-btn" id="goHomeBtn">
+      <span>🏠</span>
+      <span>메인 대시보드</span>
+    </a>
+
+    <div class="game-title-group">
+      <span class="unit-badge">초등 4-2 | 3단원 사각형 배틀</span>
+      <h1>⚔️ 사각형 타이탄 배틀: 메카 골렘전</h1>
+    </div>
+
+    <div class="game-header-stats">
+      <!-- 현재 플레이 중인 선수 표시 -->
+      <div class="hud-pill player-pill" id="activePlayerBadge" style="background: rgba(99, 102, 241, 0.25); border-color: #818cf8;">
+        <span id="playerAvatar">⚡</span>
+        <span id="playerName" style="color: #c7d2fe;">선수 1</span>
+      </div>
+      <div class="hud-pill" title="현재 점수">
+        <span>점수:</span>
+        <span id="scoreDisplay" style="color: #34d399;">0</span>
+      </div>
+      <button class="home-btn" id="soundBtn" style="padding: 8px 12px;">🔊</button>
+    </div>
+  </header>
+
+  <!-- 게임 메인 컨테이너 -->
+  <main class="quad-container" id="battleArena">
+    <!-- 보스 체력 바 (HP Bar) -->
+    <div class="boss-health-card">
+      <div class="boss-info-row">
+        <div class="boss-name-group">
+          <span class="boss-icon" id="bossIcon">👾</span>
+          <div>
+            <h3 class="boss-name" id="bossName">고대 암흑 메카 골렘</h3>
+            <span class="boss-sub">스테이지 보스 (약점: 사각형의 올바른 성질)</span>
+          </div>
+        </div>
+        <div class="boss-hp-text" id="bossHpText">HP 1000 / 1000 (100%)</div>
+      </div>
+      <div class="hp-track">
+        <div class="hp-fill" id="hpFill" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <!-- 미션 브리핑 카드 -->
+    <div class="mission-brief-card">
+      <div class="brief-top">
+        <span class="brief-badge" id="briefCategory">1. 수직 레이저 조준</span>
+        <span class="streak-badge" id="streakBadge">🔥 0 COMBO</span>
+      </div>
+      <h2 class="brief-question" id="briefQuestion">
+        두 직선이 만나서 직각(90°)을 이루는 관계를 찾아 메카의 코어를 타격하세요!
+      </h2>
+    </div>
+
+    <!-- 캔버스 배틀 디스플레이 -->
+    <div class="quad-canvas-card" id="canvasCard">
+      <canvas id="quadCanvas" width="760" height="380"></canvas>
+      <div class="floating-damage" id="damageText"></div>
+      <div class="canvas-hint-overlay" id="canvasHint">
+        💡 힌트: 각 도형의 평행한 변의 쌍 개수를 세어보세요!
+      </div>
+    </div>
+
+    <!-- 하단 조작 패널 -->
+    <div class="action-panel" id="actionPanel">
+      <!-- 동적으로 객관식 버튼 or OX 버튼 생성 -->
+    </div>
+  </main>
+
+  <!-- 결과 모달 (승리 및 3인 랭킹 기록) -->
+  <div class="game-result-modal" id="resultModal">
+    <div class="result-card">
+      <div style="font-size: 4rem;" id="resultEmoticon">👑</div>
+      <h2 style="font-family: 'Jua', sans-serif; font-size: 2rem; margin: 8px 0;" id="resultTitle">보스 메카 완벽 격파!</h2>
+      <p style="color: #94a3b8; font-size: 1rem;" id="resultDesc">사각형의 힘으로 메카 골렘을 물리쳤습니다!</p>
+
+      <div class="result-stars" id="resultStars">
+        <span class="star-slot">★</span>
+        <span class="star-slot">★</span>
+        <span class="star-slot">★</span>
+      </div>
+
+      <div style="background: rgba(0,0,0,0.4); border-radius: 18px; padding: 18px; margin: 18px 0; border: 1px solid rgba(255,255,255,0.1);">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="color: #94a3b8;">플레이 선수</span>
+          <span style="font-weight: 800; font-size: 1.15rem; color: #fbbf24;" id="resultPlayerName">번개 타이탄</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+          <span style="color: #94a3b8;">최종 격파 점수</span>
+          <span style="font-weight: 900; font-size: 1.35rem; color: #34d399;" id="finalScore">0점</span>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: #94a3b8;">최대 연속 콤보</span>
+          <span style="font-weight: 800; font-size: 1.15rem; color: #f43f5e;" id="finalStreak">0 COMBO</span>
+        </div>
+      </div>
+
+      <div class="result-btn-row">
+        <button class="result-btn retry" id="retryBtn">⚔️ 다시 배틀하기</button>
+        <a href="../../index.html" class="result-btn home">🏆 랭킹 보드로 가기</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../js/sound.js"></script>
+  <script src="../../js/storage.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

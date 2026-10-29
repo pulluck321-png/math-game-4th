@@ -1,0 +1,110 @@
+// games-data.js - 초등 4학년 2학기 1~6단원 전체 게임 레지스트리 (전 단원 플레이 가능!)
+
+const MATH_GAMES = [
+  {
+    id: "triangle-hunter",
+    title: "삼각형 헌터: 드래곤 슬레이어",
+    unit: "1단원. 삼각형",
+    semester: 2,
+    grade: 4,
+    description: "이등변삼각형, 정삼각형, 예각·직각·둔각삼각형의 비밀을 풀어 화염 드래곤을 격파하라!",
+    thumbnailIcon: "🐉",
+    badge: "1단원. 삼각형 ★PLAY",
+    color: "#0284c7",
+    accentGradient: "linear-gradient(135deg, #0284c7 0%, #2563eb 100%)",
+    difficulty: "보통 (타격감 최고)",
+    path: "games/01-triangle/index.html",
+    isReady: true,
+    category: "geometry",
+    skills: ["이등변·정삼각형 성질", "두 변/세 변의 길이", "예각·직각·둔각삼각형 분류"]
+  },
+  {
+    id: "fraction-baking",
+    title: "분수 포션 마법전: 다크 위저드",
+    unit: "2단원. 분수의 덧셈과 뺄셈",
+    semester: 2,
+    grade: 4,
+    description: "동분모 진분수와 대분수의 덧셈과 뺄셈으로 강력한 마법 포션을 정제하여 아크메이지를 물리쳐라!",
+    thumbnailIcon: "🧙‍♂️",
+    badge: "2단원. 분수 연산 ★PLAY",
+    color: "#8b5cf6",
+    accentGradient: "linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%)",
+    difficulty: "보통 (마법 액션)",
+    path: "games/02-fraction/index.html",
+    isReady: true,
+    category: "numbers",
+    skills: ["진분수의 덧셈·뺄셈", "대분수의 덧셈·뺄셈", "받아올림과 받아내림"]
+  },
+  {
+    id: "quadrilateral-builder",
+    title: "사각형 타이탄 배틀: 메카 골렘전",
+    unit: "3단원. 사각형",
+    semester: 2,
+    grade: 4,
+    description: "수직 레이저와 평행 레일 캐논, 마름모 실드로 암흑 메카 골렘을 격파하는 3인 랭킹 배틀!",
+    thumbnailIcon: "⚔️",
+    badge: "3단원. 사각형 ★PLAY",
+    color: "#059669",
+    accentGradient: "linear-gradient(135deg, #059669 0%, #10b981 100%)",
+    difficulty: "짜릿한 타격감!",
+    path: "games/03-quadrilateral/index.html",
+    isReady: true,
+    category: "geometry",
+    skills: ["수직과 수선", "평행선 사이 거리", "사다리꼴·평행사변형·마름모", "정사각형 성질"]
+  },
+  {
+    id: "decimal-runner",
+    title: "소수 터보 레이싱: 하이퍼 부스터",
+    unit: "4단원. 소수의 덧셈과 뺄셈",
+    semester: 2,
+    grade: 4,
+    description: "소수 두 자리·세 자리 자릿값을 맞추고 덧셈·뺄셈 부스터를 밟아 라이벌 하이퍼카를 따돌려라!",
+    thumbnailIcon: "🏎️",
+    badge: "4단원. 소수 연산 ★PLAY",
+    color: "#e11d48",
+    accentGradient: "linear-gradient(135deg, #e11d48 0%, #fb7185 100%)",
+    difficulty: "초고속 스피드!",
+    path: "games/04-decimal/index.html",
+    isReady: true,
+    category: "numbers",
+    skills: ["소수 두 자리·세 자리 수", "소수점 자릿값 맞추기", "소수의 덧셈과 뺄셈"]
+  },
+  {
+    id: "polygon-craft",
+    title: "다각형 실드 디펜스: 에일리언 크러시",
+    unit: "5단원. 다각형",
+    semester: 2,
+    grade: 4,
+    description: "다각형과 정다각형의 꼭짓점과 대각선 레이저 망을 전개해 외계 침략 모함을 격추하라!",
+    thumbnailIcon: "⭐",
+    badge: "5단원. 다각형 ★PLAY",
+    color: "#d97706",
+    accentGradient: "linear-gradient(135deg, #d97706 0%, #f59e0b 100%)",
+    difficulty: "두뇌 전략 디펜스!",
+    path: "games/05-polygon/index.html",
+    isReady: true,
+    category: "geometry",
+    skills: ["다각형과 정다각형", "대각선 개수 세기", "모양 만들기와 채우기"]
+  },
+  {
+    id: "line-graph-meteor",
+    title: "사이버 해커: 꺾은선그래프 추적",
+    unit: "6단원. 꺾은선그래프",
+    semester: 2,
+    grade: 4,
+    description: "연속적인 변화 데이터를 해킹하고 물결선과 눈금을 조절하여 악당 AI 서버를 셧다운시켜라!",
+    thumbnailIcon: "📈",
+    badge: "6단원. 꺾은선그래프 ★PLAY",
+    color: "#4f46e5",
+    accentGradient: "linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%)",
+    difficulty: "사이버 해킹 액션!",
+    path: "games/06-line-graph/index.html",
+    isReady: true,
+    category: "data",
+    skills: ["꺾은선그래프 해석", "눈금의 크기", "물결선 사용법", "변화 경향 파악"]
+  }
+];
+
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { MATH_GAMES };
+}
