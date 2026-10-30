@@ -10,7 +10,7 @@ const STAGES = [
     hint: "분모(7)는 그대로 두고 분자(2 + 3 = 5)끼리 더합니다!",
     formula: "2/7 + 3/7 = ?",
     visual: { type: "add", den: 7, n1: 2, n2: 3 },
-    choices: ["5/7 (파이어볼 발사!)", "5/14", "6/7", "1/7"],
+    choices: ["5/7", "5/14", "6/7", "1/7"],
     correctIndex: 0
   },
   {
@@ -20,8 +20,8 @@ const STAGES = [
     hint: "3/8 + 5/8 = 8/8 입니다. 분자와 분모가 같으면 '1'이 됩니다!",
     formula: "3/8 + 5/8 = ?",
     visual: { type: "add", den: 8, n1: 3, n2: 5 },
-    choices: ["1 (완전한 8/8 마법 충전!)", "8/16", "2", "6/8"],
-    correctIndex: 0
+    choices: ["8/16", "1", "2", "6/8"],
+    correctIndex: 1
   },
   {
     type: "choice",
@@ -30,8 +30,8 @@ const STAGES = [
     hint: "4/5 + 3/5 = 7/5 = 5/5 + 2/5 = 1과 2/5 입니다!",
     formula: "4/5 + 3/5 = 7/5 = ?",
     visual: { type: "add", den: 5, n1: 4, n2: 3 },
-    choices: ["1과 2/5 (강화 주문 발동!)", "1과 3/5", "2와 1/5", "7/10"],
-    correctIndex: 0
+    choices: ["1과 3/5", "2와 1/5", "1과 2/5", "7/10"],
+    correctIndex: 2
   },
   {
     type: "choice",
@@ -40,8 +40,8 @@ const STAGES = [
     hint: "자연수는 자연수끼리(1 + 2 = 3), 분수는 분수끼리(2/6 + 3/6 = 5/6) 더합니다!",
     formula: "1과 2/6 + 2와 3/6 = ?",
     visual: { type: "mixed_add" },
-    choices: ["3과 5/6 (아이스 볼트!)", "3과 5/12", "4와 1/6", "2와 5/6"],
-    correctIndex: 0
+    choices: ["3과 5/12", "4와 1/6", "2와 5/6", "3과 5/6"],
+    correctIndex: 3
   },
   {
     type: "choice",
@@ -50,8 +50,8 @@ const STAGES = [
     hint: "9/7 = 1과 2/7 이므로 자연수 3에 1을 더해 4와 2/7이 됩니다!",
     formula: "3과 9/7 = 3 + 1과 2/7 = ?",
     visual: { type: "carry_add" },
-    choices: ["4과 2/7 (메테오 스트라이크!)", "3과 2/7", "4와 5/7", "5와 1/7"],
-    correctIndex: 0
+    choices: ["3과 2/7", "4와 2/7", "4와 5/7", "5와 1/7"],
+    correctIndex: 1
   },
   {
     type: "choice",
@@ -60,8 +60,8 @@ const STAGES = [
     hint: "분모(9)는 그대로 두고 분자(6 - 2 = 4)를 뺍니다!",
     formula: "6/9 - 2/9 = ?",
     visual: { type: "sub", den: 9, n1: 6, n2: 2 },
-    choices: ["4/9 (포션 정제 성공!)", "4/0", "8/9", "3/9"],
-    correctIndex: 0
+    choices: ["4/0", "8/9", "4/9", "3/9"],
+    correctIndex: 2
   },
   {
     type: "choice",
@@ -70,7 +70,7 @@ const STAGES = [
     hint: "숫자 1을 분모가 5인 가분수 '5/5'로 바꿔서 빼보세요! (5/5 - 3/5)",
     formula: "1 - 3/5 = 5/5 - 3/5 = ?",
     visual: { type: "sub_from_one" },
-    choices: ["2/5 (실드 브레이크!)", "3/5", "1/5", "4/5"],
+    choices: ["2/5", "3/5", "1/5", "4/5"],
     correctIndex: 0
   },
   {
@@ -80,8 +80,8 @@ const STAGES = [
     hint: "3과 1/4 = 2와 5/4 로 변환! 2와 5/4 - 1과 3/4 = 1과 2/4 = 1과 1/2",
     formula: "2와 5/4 - 1과 3/4 = ?",
     visual: { type: "borrow_sub" },
-    choices: ["1과 2/4 (또는 1과 1/2) (최후의 마법 결착!)", "2와 2/4", "1과 1/4", "2와 1/4"],
-    correctIndex: 0
+    choices: ["2와 2/4", "1과 1/4", "1과 2/4", "2와 1/4"],
+    correctIndex: 2
   }
 ];
 

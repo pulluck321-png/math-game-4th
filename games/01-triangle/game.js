@@ -9,7 +9,7 @@ const STAGES = [
     question: "‘두 변의 길이가 같은 삼각형’의 정확한 이름은 무엇일까요?",
     hint: "같을 이(二), 등(等), 변(邊)! 두 변의 길이가 같아서 이등변삼각형입니다.",
     drawType: "isosceles_intro",
-    choices: ["이등변삼각형 (드래곤 슬래시!)", "정삼각형", "직각삼각형", "부등변삼각형"],
+    choices: ["이등변삼각형", "정삼각형", "직각삼각형", "부등변삼각형"],
     correctIndex: 0
   },
   {
@@ -18,8 +18,8 @@ const STAGES = [
     question: "세 변의 길이가 모두 같고 세 각의 크기가 모두 60°인 완벽한 삼각형은?",
     hint: "바를 정(正)! 세 변과 세 각이 모두 완벽하게 같은 삼각형입니다.",
     drawType: "equilateral_intro",
-    choices: ["정삼각형 (풀파워 크리티컬!)", "이등변삼각형", "둔각삼각형", "사다리꼴"],
-    correctIndex: 0
+    choices: ["이등변삼각형", "정삼각형", "둔각삼각형", "사다리꼴"],
+    correctIndex: 1
   },
   {
     type: "choice",
@@ -27,8 +27,8 @@ const STAGES = [
     question: "이등변삼각형의 꼭지각이 80°일 때, 길이가 같은 두 변의 밑각(★) 크기는?",
     hint: "삼각형의 세 각의 합은 180°! (180° - 80°) ÷ 2 를 계산해보세요.",
     drawType: "isosceles_angle",
-    choices: ["각각 50° (약점 타격!)", "각각 60°", "각각 40°", "각각 80°"],
-    correctIndex: 0
+    choices: ["각각 40°", "각각 60°", "각각 50°", "각각 80°"],
+    correctIndex: 2
   },
   {
     type: "choice",
@@ -36,7 +36,7 @@ const STAGES = [
     question: "다음 중 세 각이 모두 예각(0°보다 크고 90°보다 작음)인 삼각형은?",
     hint: "단 하나라도 직각(90°)이나 둔각(90° 초과)이 있으면 안 됩니다!",
     drawType: "acute_tri",
-    choices: ["예각삼각형 (관통 레이저!)", "직각삼각형", "둔각삼각형", "평각삼각형"],
+    choices: ["예각삼각형", "직각삼각형", "둔각삼각형", "평각삼각형"],
     correctIndex: 0
   },
   {
@@ -45,8 +45,8 @@ const STAGES = [
     question: "한 각이 직각(90°)인 삼각형의 올바른 이름은?",
     hint: "각도기의 90° 표시가 하나 들어가 있는 삼각형입니다.",
     drawType: "right_tri",
-    choices: ["직각삼각형 (헤드샷 타격!)", "예각삼각형", "둔각삼각형", "정삼각형"],
-    correctIndex: 0
+    choices: ["예각삼각형", "직각삼각형", "둔각삼각형", "정삼각형"],
+    correctIndex: 1
   },
   {
     type: "choice",
@@ -54,8 +54,8 @@ const STAGES = [
     question: "한 각의 크기가 90°보다 큰 둔각(예: 110°)이 있는 삼각형은?",
     hint: "한 각이 활짝 벌어져 있는 삼각형을 말합니다.",
     drawType: "obtuse_tri",
-    choices: ["둔각삼각형 (메가 슬래시!)", "예각삼각형", "직각삼각형", "이등변삼각형"],
-    correctIndex: 0
+    choices: ["예각삼각형", "직각삼각형", "이등변삼각형", "둔각삼각형"],
+    correctIndex: 3
   },
   {
     type: "choice",
@@ -63,8 +63,8 @@ const STAGES = [
     question: "세 각의 크기가 30°, 60°, 90°인 삼각형은 어떤 삼각형일까요?",
     hint: "90° 직각이 하나 있으므로 직각삼각형입니다!",
     drawType: "right_30_60",
-    choices: ["직각삼각형 (급소 명중!)", "예각삼각형", "둔각삼각형", "정삼각형"],
-    correctIndex: 0
+    choices: ["예각삼각형", "둔각삼각형", "직각삼각형", "정삼각형"],
+    correctIndex: 2
   },
   {
     type: "ox",

@@ -9,8 +9,8 @@ const STAGES = [
     question: "‘수량을 점으로 찍고 선분으로 이어 연속적인 시간 변화를 나타낸 그래프’는?",
     hint: "시간에 따라 기온이나 키가 쑥쑥 자라는 모습을 보기에 가장 좋습니다!",
     drawType: "intro_line",
-    choices: ["꺾은선그래프 (해킹 툴 실행!)", "막대그래프", "그림그래프", "원그래프"],
-    correctIndex: 0
+    choices: ["막대그래프", "꺾은선그래프", "그림그래프", "원그래프"],
+    correctIndex: 1
   },
   {
     type: "choice",
@@ -18,8 +18,8 @@ const STAGES = [
     question: "시간의 흐름에 따른 ‘연속적인 변화의 모습’을 가장 잘 파악할 수 있는 그래프는?",
     hint: "막대그래프는 양의 크기 비교, 꺾은선그래프는 변화하는 추세 파악에 최고입니다!",
     drawType: "compare_graphs",
-    choices: ["꺾은선그래프 (트렌드 분석 완료!)", "막대그래프", "달력", "표"],
-    correctIndex: 0
+    choices: ["막대그래프", "달력", "표", "꺾은선그래프"],
+    correctIndex: 3
   },
   {
     type: "choice",
@@ -27,8 +27,8 @@ const STAGES = [
     question: "세로 눈금 0부터 10까지가 5칸으로 나누어져 있습니다. 한 칸의 크기는?",
     hint: "10 ÷ 5 = 2! 눈금 한 칸은 2를 나타냅니다.",
     drawType: "grid_scale",
-    choices: ["2 (정밀 데이터 추출!)", "1", "5", "10"],
-    correctIndex: 0
+    choices: ["1", "2", "5", "10"],
+    correctIndex: 1
   },
   {
     type: "choice",
@@ -36,8 +36,8 @@ const STAGES = [
     question: "꺾은선그래프에서 아래쪽에 물결 모양 선(〰️)을 사용하는 가장 큰 이유는?",
     hint: "수량이 0인 쓸데없는 공간을 줄여서, 변화하는 모습을 훨씬 크고 뚜렷하게 보기 위함입니다!",
     drawType: "wave_line",
-    choices: ["필요 없는 부분을 줄여 변화를 더 뚜렷하게 보기 위해", "예쁘게 장식하기 위해", "데이터가 0임을 숨기기 위해", "선이 부족해서"],
-    correctIndex: 0
+    choices: ["예쁘게 장식하기 위해", "데이터가 0임을 숨기기 위해", "필요 없는 부분을 줄여 변화를 더 뚜렷하게 보기 위해", "선이 부족해서"],
+    correctIndex: 2
   },
   {
     type: "choice",
@@ -45,8 +45,8 @@ const STAGES = [
     question: "화면의 꺾은선그래프에서 ‘변화가 가장 큰 구간’은 어디일까요?",
     hint: "선분의 기울기가 가장 가파르게 위로 치솟거나 떨어진 구간을 찾으세요!",
     drawType: "steepest_segment",
-    choices: ["2시 ~ 3시 (가장 가파른 급상승 구간!)", "1시 ~ 2시", "3시 ~ 4시", "4시 ~ 5시"],
-    correctIndex: 0
+    choices: ["1시 ~ 2시", "3시 ~ 4시", "2시 ~ 3시", "4시 ~ 5시"],
+    correctIndex: 2
   },
   {
     type: "choice",
@@ -54,7 +54,7 @@ const STAGES = [
     question: "꺾은선그래프에서 선분이 가로로 평평하게 이어진 구간의 의미는?",
     hint: "높이가 그대로 유지되었으므로 수량의 변화가 없다는 뜻입니다!",
     drawType: "flat_segment",
-    choices: ["수량의 변화가 없다 (일정하다)", "수량이 0이 되었다", "데이터가 삭제되었다", "가장 빠르게 변했다"],
+    choices: ["수량의 변화가 없다", "수량이 0이 되었다", "데이터가 삭제되었다", "가장 빠르게 변했다"],
     correctIndex: 0
   },
   {
@@ -63,8 +63,8 @@ const STAGES = [
     question: "꺾은선그래프를 그릴 때 가장 마지막에 수행하는 단계는?",
     hint: "가로/세로 눈금을 정하고 -> 점을 찍고 -> 마지막에 점들을 선분으로 잇습니다!",
     drawType: "draw_order",
-    choices: ["점들을 선분으로 잇는다 (네트워크 연결!)", "가로와 세로 눈금을 정한다", "제목을 붙인다", "점을 찍는다"],
-    correctIndex: 0
+    choices: ["가로와 세로 눈금을 정한다", "제목을 붙인다", "점을 찍는다", "점들을 선분으로 잇는다"],
+    correctIndex: 3
   },
   {
     type: "choice",
@@ -72,7 +72,7 @@ const STAGES = [
     question: "오전 9시(15°) -> 11시(19°) -> 13시(23°)로 계속 상승 중일 때, 14시의 예상 기온은?",
     hint: "기온의 변화 경향이 지속적으로 올라가고 있으므로 13시보다 더 높을 것으로 예측됩니다!",
     drawType: "predict_future",
-    choices: ["23°보다 더 높을 것이다 (서버 완전 셧다운!)", "23°보다 훨씬 낮을 것이다", "0°가 될 것이다", "알 수 없다"],
+    choices: ["23°보다 더 높을 것이다", "23°보다 훨씬 낮을 것이다", "0°가 될 것이다", "알 수 없다"],
     correctIndex: 0
   }
 ];

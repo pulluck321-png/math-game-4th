@@ -9,7 +9,7 @@ const STAGES = [
     question: "‘선분으로만 둘러싸인 도형’을 무엇이라고 부를까요?",
     hint: "원처럼 둥근 곡선이 있거나 뚫려 있으면 다각형이 아닙니다!",
     drawType: "polygon_def",
-    choices: ["다각형 (실드 활성화!)", "원", "직선", "입체도형"],
+    choices: ["다각형", "원", "직선", "입체도형"],
     correctIndex: 0
   },
   {
@@ -18,8 +18,8 @@ const STAGES = [
     question: "변이 6개, 꼭짓점이 6개인 다각형의 이름은?",
     hint: "변의 수가 5개면 오각형, 6개면 육각형, 8개면 팔각형입니다!",
     drawType: "hexagon_intro",
-    choices: ["육각형 (블래스터 장전!)", "오각형", "칠각형", "팔각형"],
-    correctIndex: 0
+    choices: ["오각형", "육각형", "칠각형", "팔각형"],
+    correctIndex: 1
   },
   {
     type: "choice",
@@ -27,8 +27,8 @@ const STAGES = [
     question: "‘정다각형’이 되기 위해 반드시 갖추어야 할 두 조건은?",
     hint: "변의 길이만 같아도 안 되고(마름모처럼), 둘 다 완벽히 같아야 합니다!",
     drawType: "regular_poly",
-    choices: ["변의 길이가 모두 같고, 각의 크기도 모두 같다", "변의 길이만 같으면 된다", "각의 크기만 같으면 된다", "대각선 개수가 같으면 된다"],
-    correctIndex: 0
+    choices: ["변의 길이만 같으면 된다", "각의 크기만 같으면 된다", "변의 길이가 모두 같고, 각의 크기도 모두 같다", "대각선 개수가 같으면 된다"],
+    correctIndex: 2
   },
   {
     type: "choice",
@@ -36,8 +36,8 @@ const STAGES = [
     question: "‘다각형에서 이웃하지 않는 두 꼭짓점을 이은 선분’은?",
     hint: "바로 옆 꼭짓점과 이으면 '변'이 되고, 건너편과 이으면 '대각선'이 됩니다!",
     drawType: "diag_concept",
-    choices: ["대각선 (레이저 락온!)", "수선", "평행선", "반직선"],
-    correctIndex: 0
+    choices: ["수선", "평행선", "반직선", "대각선"],
+    correctIndex: 3
   },
   {
     type: "choice",
@@ -45,8 +45,8 @@ const STAGES = [
     question: "사각형에 그을 수 있는 대각선은 모두 몇 개일까요?",
     hint: "마주 보는 꼭짓점을 X자로 연결해보세요!",
     drawType: "quad_diag",
-    choices: ["2개 (크로스 빔 발사!)", "1개", "4개", "3개"],
-    correctIndex: 0
+    choices: ["1개", "2개", "4개", "3개"],
+    correctIndex: 1
   },
   {
     type: "choice",
@@ -54,8 +54,8 @@ const STAGES = [
     question: "오각형의 모든 꼭짓점에서 대각선을 그으면 총 몇 개가 될까요?",
     hint: "모든 대각선을 그으면 가운데 예쁜 별(⭐) 모양이 완성됩니다!",
     drawType: "pentagon_star",
-    choices: ["5개 (스타 레이저 전개!)", "3개", "10개", "6개"],
-    correctIndex: 0
+    choices: ["3개", "10개", "5개", "6개"],
+    correctIndex: 2
   },
   {
     type: "choice",
@@ -63,7 +63,7 @@ const STAGES = [
     question: "육각형에 그을 수 있는 대각선의 총 개수는?",
     hint: "한 꼭짓점에서 3개씩 그을 수 있습니다. 총 개수는 9개!",
     drawType: "hexagon_diag",
-    choices: ["9개 (풀 그리드 레이저!)", "6개", "12개", "8개"],
+    choices: ["9개", "6개", "12개", "8개"],
     correctIndex: 0
   },
   {
@@ -72,8 +72,8 @@ const STAGES = [
     question: "크기가 같은 ‘정삼각형 6개’를 모아 완성할 수 있는 정다각형은?",
     hint: "피자 조각 6개를 모으면 변이 6개인 정다각형이 됩니다!",
     drawType: "tessellation",
-    choices: ["정육각형 (최종 코어 파괴!)", "정오각형", "정팔각형", "정사각형"],
-    correctIndex: 0
+    choices: ["정오각형", "정육각형", "정팔각형", "정사각형"],
+    correctIndex: 1
   }
 ];
 

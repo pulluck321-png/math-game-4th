@@ -9,7 +9,7 @@ const STAGES = [
     question: "두 직선이 만나서 이루는 각이 직각(90°)일 때, 적의 코어를 뚫는 두 직선의 관계는?",
     hint: "서로 직각으로 만나는 두 직선을 '수직'이라 하고, 한 직선을 다른 직선에 대한 '수선'이라 합니다.",
     drawType: "perpendicular",
-    choices: ["서로 수직이다 (크리티컬 빔!)", "서로 평행하다", "서로 빗겨간다", "서로 겹친다"],
+    choices: ["서로 수직이다", "서로 평행하다", "서로 빗겨간다", "서로 겹친다"],
     correctIndex: 0
   },
   {
@@ -18,8 +18,8 @@ const STAGES = [
     question: "평행선 사이의 최단 거리를 정확히 저격하는 올바른 미사일 궤적은?",
     hint: "평행선 사이의 거리는 두 평행선에 '수직인 선분의 길이'로 잽니다.",
     drawType: "parallel_distance",
-    choices: ["평행선에 수직인 선분 B (최단거리 관통!)", "기울어진 긴 선분 A", "비스듬한 선분 C", "아무 선분이나 상관없다"],
-    correctIndex: 0
+    choices: ["기울어진 긴 선분 A", "평행선에 수직인 선분 B", "비스듬한 선분 C", "아무 선분이나 상관없다"],
+    correctIndex: 1
   },
   {
     type: "choice",
@@ -27,8 +27,8 @@ const STAGES = [
     question: "‘평행한 변이 한 쌍이라도 있는 사각형’의 정확한 이름은 무엇일까요?",
     hint: "마주 보는 변 중에서 적어도 한 쌍이 평행(나란히)하면 이 도형에 해당합니다.",
     drawType: "trapezoid",
-    choices: ["사다리꼴 (1쌍 이상 평행!)", "사다리", "사다리삼각형", "원형"],
-    correctIndex: 0
+    choices: ["사다리", "사다리삼각형", "사다리꼴", "원형"],
+    correctIndex: 2
   },
   {
     type: "choice",
@@ -36,8 +36,8 @@ const STAGES = [
     question: "평행사변형에서 윗변이 9cm, 한 각이 65°일 때, 아랫변의 길이와 마주 보는 각은?",
     hint: "평행사변형은 '마주 보는 변의 길이가 같고', '마주 보는 각의 크기가 같습니다'.",
     drawType: "parallelogram_props",
-    choices: ["9cm, 65° (성질 완벽 일치!)", "9cm, 115°", "5cm, 65°", "18cm, 130°"],
-    correctIndex: 0
+    choices: ["9cm, 115°", "5cm, 65°", "18cm, 130°", "9cm, 65°"],
+    correctIndex: 3
   },
   {
     type: "choice",
@@ -45,8 +45,8 @@ const STAGES = [
     question: "마름모의 두 대각선이 교차하는 지점의 각도(★)는 몇 도일까요?",
     hint: "마름모의 두 대각선은 서로를 수직(90°)으로 반씩 나눕니다(수직이등분).",
     drawType: "rhombus_diag",
-    choices: ["90° (직각 수직이등분!)", "60° (예각)", "120° (둔각)", "180° (평각)"],
-    correctIndex: 0
+    choices: ["60°", "90°", "120°", "180°"],
+    correctIndex: 1
   },
   {
     type: "choice",
@@ -54,8 +54,8 @@ const STAGES = [
     question: "‘네 각이 모두 직각이고, 네 변의 길이가 모두 같은 사각형’은?",
     hint: "직사각형의 성질(네 각 직각)과 마름모의 성질(네 변 같음)을 모두 가진 사각형입니다.",
     drawType: "square_king",
-    choices: ["정사각형 (최강의 완전체!)", "직사각형", "마름모", "평행사변형"],
-    correctIndex: 0
+    choices: ["직사각형", "마름모", "정사각형", "평행사변형"],
+    correctIndex: 2
   },
   {
     type: "ox",
